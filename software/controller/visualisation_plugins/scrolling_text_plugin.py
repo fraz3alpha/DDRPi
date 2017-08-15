@@ -44,7 +44,7 @@ class ScrollingTextVisualisationPlugin(VisualisationPlugin):
         h = canvas.get_height()
 
         text = "Congratulations"
-        colour = FloorCanvas.RED
+        colour = FloorCanvas.BLUE
         background_colour = FloorCanvas.BLACK
         speed = 10.0
 

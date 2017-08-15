@@ -19,6 +19,7 @@ class ColourPlugin(VisualisationPlugin):
         "RED": (0xFF, 0, 0),
         "GREEN": (0, 0xFF, 0),
         "BLUE": (0, 0, 0xFF),
+        "YELLOW": (0xFF, 0xFF, 0),
         "BLACK": (0, 0, 0),
         "WHITE": (0xFF, 0xFF, 0xFF),
     }
@@ -50,7 +51,34 @@ class ColourPlugin(VisualisationPlugin):
         return canvas
 
     def handle_event(self, event):
-        pass
+        """
+        Handle the pygame event sent to the plugin from the main loop
+        """
+
+        joypad = action = action_value = event_name = None
+
+        try:
+            event_name_temp = pygame.event.event_name(event.type)
+
+            if (event_name_temp == "JoyButtonDown"):
+                # button = self.__buttons__[event.button]
+                button = event.button
+                if (button != None):
+                    if (button == ControllerInput.BUTTON_A):
+                        self.colour = ColourPlugin.__colours__["RED"]
+                    if (button == ControllerInput.BUTTON_B):
+                        self.colour = ColourPlugin.__colours__["YELLOW"]
+                    if (button == ControllerInput.BUTTON_X):
+                        self.colour = ColourPlugin.__colours__["BLUE"]
+                    if (button == ControllerInput.BUTTON_Y):
+                        self.colour = ColourPlugin.__colours__["GREEN"]
+                    if (button == ControllerInput.BUMPER_LEFT):
+                        self.colour = ColourPlugin.__colours__["BLACK"]
+                    if (button == ControllerInput.BUMPER_RIGHT):
+                        self.colour = ColourPlugin.__colours__["WHITE"]
+
+        except Exception as ex:
+            print (ex)
 
     def draw_splash(self, canvas):
         return self.draw_surface(canvas)

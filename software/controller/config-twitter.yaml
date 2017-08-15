@@ -1,0 +1,71 @@
+# Main option config
+system:
+  plugin_dir: plugins
+  floor: True
+  tty: /dev/ttyUSB0
+  debug: False
+  debug_logging: True
+  pipe: /tmp/dance_pipe
+  floor_rotation: 2
+
+twitter:
+  enabled: True
+  username: "LED_Dance_Floor"
+  api_key: "AvtujZcwuborAl29SwXEf1J0Y"
+  api_secret: "sCBO6CPQc5iGeN4AgwZxrpWN0Q3EtnKRLgGYA7TWzK73SadnO3"
+  access_token : "710566689491050496-ianhDdIVwXwmwtH0iSIO8UuI1WlmdLu"
+  access_token_secret : "WB1cXdvE3fNEOEuEooPg2CL5aU44MEqiacMjpRJFCfQE3"
+  messages:
+    startup: ""
+
+#  filters:
+#    1:
+#        name: ClearFilter
+#    2:
+#        name: NegativeFilter
+#    3:
+#        name: NeutralDensityFilter
+#        factor: 1
+
+outputs:
+  1:
+    name: dancefloor serial
+    type: serial
+    tty: /dev/ttyUSB0
+    baud: 1000000
+    enabled: True
+
+  2:
+    name: dancefloor gui
+    type: gui
+    enabled: True
+
+  3:
+    name: dancefloor pipe
+    type: pipe
+    pipe: /tmp/dance_pipe
+    enabled: False
+
+# Module layout config (we may change this later)
+modules:
+  3:
+    width: 6
+    height: 8
+    x_position: 0
+    y_position: 0
+    orientation: N
+
+  2:
+    width: 6
+    height: 8
+    x_position: 6
+    y_position: 0
+    orientation: S
+
+  1:
+    width: 6
+    height: 8
+    x_position: 12
+    y_position: 0
+    orientation: N
+

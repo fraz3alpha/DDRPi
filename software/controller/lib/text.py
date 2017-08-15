@@ -151,7 +151,10 @@ class TextWriter():
                 if character in custom_text:
                     character_definition = custom_text[character]
             if character_definition is None:
-                character_definition = TextWriter.font_5x7[character]
+                if character in TextWriter.font_5x7:
+                    character_definition = TextWriter.font_5x7[character]
+                else:
+                    character_definition = TextWriter.font_5x7[" "]
             font_characters.append(character_definition)
             if (character_definition != None):
                 for x in range(0, len(character_definition)):
